@@ -47,6 +47,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .sd{background:#fee2e2;color:#991b1b}
 .sm{background:#fef3c7;color:#92400e}
 .su{background:#f3f2ef;color:#888}
+.sp{background:#ede9fe;color:#5b21b6}
 .bk{font-size:13px;color:#666;background:none;border:none;cursor:pointer;padding:0;margin-bottom:1.5rem;display:flex;align-items:center;gap:4px}
 .bk:hover{color:#1a1a1a}
 .mn{font-size:11px;color:#aaa;margin-top:8px}
@@ -102,9 +103,9 @@ const R=[
      {name:"Gravy",role:"Pirata-esqueleto, governador",ini:"GR",s:"alive",met:"Sessão 4 — Baiacu-Cofre",desc:"Reflexo na água revela esqueleto de pirata antigo. Trato com Cururu: fornece corpos para experimentos em Umbra-Kael em troca de sabotagem ao Túnel Central. Tem a espada de Florian.",c:["Cururu","Riptide","Puffin","Shane","Florian"]},
      {name:"Cururu",role:"Peixe-gato ancião, dono do bar",ini:"CU",s:"alive",met:"Sessão 4 — Embaixo da Pia",desc:"Conhece todos pelo nome antes de serem apresentados. Come corações como penhor de tratos. O grupo deve destruir um artefato no Baiacu-Cofre e levar Katsu a um lugar não revelado.",c:["Gravy","Kav'Daen","Katsu","Ira"]},
      {name:"Riptide",role:"Morto-vivo recorrente, tripulante",ini:"RI",s:"alive",met:"Sessão 3 — barco de Riptide",desc:"Gordo, cinzento, com gosma que vaza pelos poros. Já morreu várias vezes e sempre volta. Deve a vida a Gravy.",c:["Gravy","Puffin"]},
-     {name:"Puffin",role:"Inventora, construía para Gravy",ini:"PU",s:"alive",met:"Sessão 3 — barco de Riptide",desc:"Olhos cansados de quem trabalha para quem não escolheu. Cururu comeu seu coração como penhor de libertação futura. Aprendiz de Dash em Makia. Presa n'Embaixo da Pia.",c:["Gravy","Cururu","Dash","Riptide"]},
+     {name:"Puffin",role:"Inventora, construía para Gravy",ini:"PU",s:"prisoner",met:"Sessão 3 — barco de Riptide",desc:"Olhos cansados de quem trabalha para quem não escolheu. Cururu comeu seu coração como penhor de libertação futura. Aprendiz de Dash em Makia. Presa n'Embaixo da Pia.",c:["Gravy","Cururu","Dash","Riptide"]},
      {name:"Ira",role:"Guerreira, irmã de Katsu",ini:"IR",s:"alive",met:"Sessão 2 — porto de Voltuma",desc:"Armadura de aço escurecido. Ficou em Marina Forte aguardando Katsu. Coração comido por Cururu e devolvido mediante trato.",c:["Katsu","Cururu"]},
-     {name:"Katsu",role:"Irmão de Ira, preso com Cururu",ini:"KA",s:"alive",met:"Sessão 3 — cidade da Grande Árvore",desc:"Havia roubado o Tangolin de Starvo. Retido nos domínios de Cururu como garantia. O cantil mágico dele está com Bloody Rose.",c:["Ira","Cururu","Starvo"]},
+     {name:"Katsu",role:"Irmão de Ira, preso com Cururu",ini:"KA",s:"prisoner",met:"Sessão 3 — cidade da Grande Árvore",desc:"Havia roubado o Tangolin de Starvo. Retido nos domínios de Cururu como garantia. O cantil mágico dele está com Bloody Rose.",c:["Ira","Cururu","Starvo"]},
      {name:"Tom Goblím",role:"Barqueiro infame",ini:"TG",s:"missing",met:"Sessão 2 — porto de Voltuma",desc:"Procurado em Marina Forte por transportar e vender pessoas. Habilidades náuticas inversamente proporcionais à moralidade.",c:["Ira"]},
      {name:"Lord Germânico",role:"Líder da Ordem da Grande Árvore",ini:"LG",s:"unknown",met:"Sessão 3 — cidade da Grande Árvore",desc:"Furioso com a destruição da máquina que fazia passar por árvore sagrada. Sumiu após o colapso.",c:[]},
    ]},
@@ -121,7 +122,7 @@ const R=[
    desc:"No meridiano onde o anel se fratura em dois. De um lado o sol nunca se põe — domínio de Diana. Do outro, a sombra nunca se encolhe — império de Kav'Daen. Os Residentes vivem sob o Trato Infinito, servidão hereditária disfarçada de paraíso.",
    pois:[{n:"Heliantos — Costa do Dia",d:"Resorts de luxo, gastronomia como arte sagrada. Domínio de Diana, a Matriarca. Privacidade custa mais que a estadia."},{n:"Nyxos — Império da Noite",d:"Cassinos monumentais, contratos de sangue. Domínio de Kav'Daen, o Patriarca."},{n:"Rubis da Ilha Paraíso",d:"Pedras encantadas que rastreiam mutuamente quem as carrega. O colar de Frankie aponta para Danízio."}],
    npcs:[
-     {name:"Danízio",role:"Carteador, membro da party",ini:"DZ",s:"missing",met:"Sessão 1 — festival de Voltuma",desc:"Sorriso de quem conhece seus bolsos e os do próximo. Enviado a Umbra-Kael via sarcófago por Gravy. Tem o dedo de Riptide no bolso. O colar de Frankie aponta para ele.",c:["Etoile Du Tutu","Gravy","Frankie","Kav'Daen"]},
+     {name:"Danízio",role:"Carteador, membro da party",ini:"DZ",s:"prisoner",met:"Sessão 1 — festival de Voltuma",desc:"Sorriso de quem conhece seus bolsos e os do próximo. Enviado a Umbra-Kael via sarcófago por Gravy. Tem o dedo de Riptide no bolso. O colar de Frankie aponta para ele.",c:["Etoile Du Tutu","Gravy","Frankie","Kav'Daen"]},
      {name:"Frankie",role:"Mulher costurada, tesoura enorme",ini:"FR",s:"alive",met:"Sessão 4 — Marina Forte",desc:"Partes costuradas com brutalidade estética de experimento que deu certo sem querer. Conhecia Danízio da Ilha Paraíso. Entrou em Etcetera sem pedir licença. Ceifou dois piratas na névoa. Entregou o colar de rubi a Petúnia.",c:["Danízio","Kav'Daen"]},
      {name:"Kav'Daen",role:"Patriarca da noite, dono de cassino",ini:"KD",s:"alive",met:"Sessão 5 — Embaixo da Pia",desc:"Negociava com Cururu no fundo do mar. Natureza da negociação desconhecida. Petúnia tem a ficha de rubi do cassino dele, guardada no vaso entre a terra viva.",c:["Cururu","Danízio","Frankie"]},
      {name:"Diana",role:"Matriarca da Costa do Dia",ini:"DI",s:"unknown",met:"Mencionada nos registros",desc:"Governa Heliantos, a metade iluminada da Ilha Paraíso. Ainda não encontrada.",c:["Kav'Daen"]},
@@ -185,7 +186,7 @@ const R=[
      {name:"A Dama",role:"Personalidade notável",ini:"AD",s:"unknown",met:"Mencionada nos registros",desc:"Personalidade notável de Umbra-Kael. Ainda não encontrada pelo grupo.",c:[]},
      {name:"Arakni",role:"Cobaia-Errante",ini:"AR",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável de Umbra-Kael. Ainda não encontrado.",c:[]},
      {name:"O Carrasco",role:"Gigante de armadura prateada",ini:"CA",s:"dead",met:"Sessão 8 — tundra de Tunguska",desc:"Três metros de mamilos em riste. Elmo com fenda horizontal e dois chifres imensos. Caçava Florian com duas feras etéreas. Derrotado por Petúnia na sessão 9.",c:["Florian","Shane"]},
-     {name:"Etoile Du Tutu",role:"Dançarino entropista, membro da party",ini:"ET",s:"missing",met:"Sessão 3 — cidade da Grande Árvore",desc:"Caiu literalmente do céu no meio da campanha. Saltou voluntariamente dentro do sarcófago para salvar Danízio. Preso em Umbra-Kael.",c:["Danízio","Gravy"]},
+     {name:"Etoile Du Tutu",role:"Dançarino entropista, membro da party",ini:"ET",s:"prisoner",met:"Sessão 3 — cidade da Grande Árvore",desc:"Caiu literalmente do céu no meio da campanha. Saltou voluntariamente dentro do sarcófago para salvar Danízio. Preso em Umbra-Kael.",c:["Danízio","Gravy"]},
    ]},
   {id:"tunguska",icon:"ti-snowflake",name:"Tunguska",tag:"A Tundra Errática",v:true,color:"#378ADD",iBg:"#E6F1FB",iC:"#0C447C",
    desc:"Deserto branco de proporções colossais. O frio não corta a pele — vai fundo, até o espírito. A névoa roxa e verde derrete a fronteira entre realidade e pesadelo. Os habitantes são o povo mais acolhedor do continente.",
@@ -214,8 +215,8 @@ const R=[
      {name:"Cabeça-Dura",role:"Personalidade notável",ini:"CD",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável do Reino Selvagem. Ainda não encontrado.",c:[]},
    ]},
 ];
-const sL={alive:"ativo",dead:"morto",missing:"desaparecido",unknown:"desconhecido"};
-const sC={alive:"sa",dead:"sd",missing:"sm",unknown:"su"};
+const sL={alive:"ativo",dead:"morto",missing:"desaparecido",unknown:"desconhecido",prisoner:"preso"};
+const sC={alive:"sa",dead:"sd",missing:"sm",unknown:"su",prisoner:"sp"};
 function renderOv(){
   document.getElementById("rg").innerHTML=R.map(r=>`
     <button class="rbtn" onclick="showR('${r.id}')">
