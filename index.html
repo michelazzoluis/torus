@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crônicas do Anel — Torus</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8f7f4;color:#1a1a1a;min-height:100vh}
+.wrap{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+.header{padding:2rem 0 1.5rem;border-bottom:1px solid #e0ddd6;margin-bottom:2rem}
+.header h1{font-size:22px;font-weight:500;letter-spacing:0.04em;display:flex;align-items:center;gap:10px}
+.header p{font-size:14px;color:#666;margin-top:4px}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:2rem}
+.rbtn{background:#fff;border:1px solid #e0ddd6;border-radius:12px;padding:14px 16px;cursor:pointer;text-align:left;transition:border-color 0.15s;width:100%}
+.rbtn:hover{border-color:#aaa}
+.rbtn .ri{font-size:20px;margin-bottom:6px;display:block}
+.rbtn .rn{font-size:14px;font-weight:500}
+.rbtn .rt{font-size:11px;color:#888;margin-top:2px}
+.rbtn .rc{font-size:11px;color:#aaa;margin-top:4px}
+.det{display:none}.det.on{display:block}
+.dh{margin-bottom:1.5rem}
+.dh h2{font-size:18px;font-weight:500;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.dh p{font-size:14px;color:#555;line-height:1.6}
+.vb{font-size:11px;padding:2px 8px;border-radius:20px;background:#d1fae5;color:#065f46}
+.uvb{font-size:11px;padding:2px 8px;border-radius:20px;background:#f3f2ef;color:#888}
+.sl{font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.08em;margin:1.5rem 0 0.75rem}
+.pl{display:flex;flex-direction:column;gap:6px;margin-bottom:1.5rem}
+.poi{background:#f3f2ef;border-radius:8px;padding:10px 14px;font-size:13px}
+.poi strong{font-weight:500;display:block;margin-bottom:2px}
+.poi span{color:#666}
+.nl{display:flex;flex-direction:column;gap:10px}
+.npc{background:#fff;border:1px solid #e0ddd6;border-radius:12px;padding:14px 16px}
+.nt{display:flex;align-items:flex-start;gap:12px;margin-bottom:8px}
+.av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0}
+.nn{font-size:14px;font-weight:500}
+.nr{font-size:12px;color:#888;margin-top:2px}
+.nb{font-size:13px;color:#555;line-height:1.6;border-top:1px solid #f0ede8;padding-top:8px}
+.cs{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+.ct{font-size:11px;padding:3px 8px;border-radius:20px;border:1px solid #ddd;color:#666}
+.sb{font-size:11px;padding:2px 8px;border-radius:20px;margin-left:6px}
+.sa{background:#d1fae5;color:#065f46}
+.sd{background:#fee2e2;color:#991b1b}
+.sm{background:#fef3c7;color:#92400e}
+.su{background:#f3f2ef;color:#888}
+.bk{font-size:13px;color:#666;background:none;border:none;cursor:pointer;padding:0;margin-bottom:1.5rem;display:flex;align-items:center;gap:4px}
+.bk:hover{color:#1a1a1a}
+.mn{font-size:11px;color:#aaa;margin-top:8px}
+.empty{font-size:13px;color:#bbb;font-style:italic;padding:.75rem 0}
+@media(max-width:500px){.rgrid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1><i class="ti ti-planet"></i> Crônicas do Anel — Torus</h1>
+    <p>Todas as regiões · personagens organizados por origem</p>
+  </div>
+  <div id="ov"><div class="rgrid" id="rg"></div></div>
+  <div id="dv" class="det">
+    <button class="bk" onclick="showOv()"><i class="ti ti-arrow-left"></i> Todas as regiões</button>
+    <div id="dc"></div>
+  </div>
+</div>
+<script>
+const R=[
+  {id:"oleracea",icon:"ti-plant-2",name:"Oleracea",tag:"A Cidade da Luz Eterna",v:true,color:"#639922",iBg:"#EAF3DE",iC:"#27500A",
+   desc:"Cidade-floresta no anel interno, sob a vigília perpétua de Chroma. Sem noite, sem sombra. As árvores são arquitetura: troncos ocos servem de lares, raízes formam estradas. Regida pelo sistema do Cromaéxis e pela Luminar Verdance.",
+   pois:[{n:"O Solário",d:"A maior Lactárvore de Oleracea. Sede do governo e residência da Luminar. Câmaras de sap endurecida com luz de Chroma fragmentada em prismas."},{n:"A Câmara dos Galhos",d:"Conselho dos anciões, construído nos galhos altos da Lactárvore. Reuniões em suspensão no ar."},{n:"O Berçário Luminar",d:"Clareira de canteiros individuais para cada Lumen. O canteiro de Florian ainda está lá, intocado."},{n:"O Espelho d'Água",d:"Onde o Cromaéxis é celebrado. Todos descalços na margem quando novos Lumens são anunciados."},{n:"Instituto de Hortomancia",d:"Rede de estufas interconectadas. Petúnia estudou aqui. Nunca voltou para ensinar."},{n:"Laboratório-Estufa de Petúnia",d:"Na Borda do Brilho. Fungos-luz, raízes dobradas, ervas oníricas. Vizinha mais próxima a 40 min a pé."},{n:"Rio Molhante",d:"Curso de águas luminosas. Oleracianos se lançam à correnteza para deslocar-se de casa ao trabalho."}],
+   npcs:[
+     {name:"Dona Petúnia Begonianov",role:"Hortomante · Girassol",ini:"PB",s:"alive",met:"Personagem jogável",desc:"Hortomante de Oleracea. Turbante de bulbo, cigarrilha de ervas oníricas e vaso de cerâmica sempre a tiracolo. Tem o Tangolin e a Nepenthes Maxima Vita flutuando no ombro.",c:["Verdance","Briar","Terra","Florian"]},
+     {name:"Verdance",role:"Luminar · Roseira",ini:"VE",s:"alive",met:"Indireta — via adaga e missão",desc:"Roseira como assinatura. Ascendeu sobre o gêmeo Florian após conversa privada da família. A adaga de roseira entregue via Briar tem magia estranha de rastreamento — ela sabe onde Petúnia está.",c:["Florian","Briar","Terra","Petúnia"]},
+     {name:"Florian",role:"Gêmeo preterido · Cachimbo-Fantasma",ini:"FL",s:"alive",met:"Sessão 9 — tundra de Tunguska",desc:"Cachimbo-Fantasma como assinatura — planta parasita, translúcida, sem clorofila, que vive às custas de outras. Fascínio por decomposição. Estava sendo caçado na tundra. Abraçou Petúnia chorando ao ser resgatado. Desmaiou quando o Chroma piscou.",c:["Verdance","Petúnia","Briar","Gravy"]},
+     {name:"Briar",role:"Protetora do Verde · Rosa-brava",ini:"BR",s:"alive",met:"Sessão 4 — Marina Forte",desc:"Rosa-brava como assinatura. Missão diplomática em Marina Forte. Entregou a adaga de roseira a Petúnia e prometeu negociar o financiamento dos projetos.",c:["Verdance","Terra","Petúnia","Florian"]},
+     {name:"Terra",role:"O Coletor da Morada · Raiz de Carvalho",ini:"TE",s:"alive",met:"Sessão 4 — Marina Forte",desc:"Raiz de carvalho como assinatura. Ancião sábio e conselheiro. Veio com Briar. Petúnia se comunicou com ele via ritual botânico para reportar o paradeiro de Florian.",c:["Briar","Verdance","Petúnia"]},
+   ]},
+  {id:"voltuma",icon:"ti-sparkles",name:"Voltuma",tag:"A Capital do Êxtase",v:true,color:"#7F77DD",iBg:"#EEEDFE",iC:"#3C3489",
+   desc:"Capital do êxtase arcano. Fitas de mana em azul-safira costuravam o ar entre copas de árvores-mãe colossais. Cidade de festivais, gincanas e magia selvagem. Bardos arcanos competem moldar correntes de energia em formas impossíveis.",
+   pois:[{n:"Festival de Aurora e Starvo",d:"Onde tudo começou. Aranhas gigantes, figura de máscara oni e o primeiro sangue da campanha."},{n:"Porto de Voltuma",d:"Canal de éter onde barcos flutuam com leveza demais. Ponto de partida para Marina Forte."},{n:"Hotel-árvore de luxo",d:"Quartos esculpidos em troncos centenários. Primeiro banho de Mexxin."},{n:"Galerias dos Magos Superiores",d:"Nos galhos mais altos das árvores-mãe. Magos residentes tecem correntes elementais para evitar tempestades destrutivas."}],
+   npcs:[
+     {name:"Aurora",role:"Co-chefe do comitê de eventos",ini:"AU",s:"alive",met:"Sessão 1 — festival",desc:"Organizadora do festival onde a campanha começou. Sabe que o ataque das aranhas foi planejado, mas não revelou por quem.",c:["Starvo"]},
+     {name:"Starvo",role:"Co-chefe do comitê de eventos",ini:"ST",s:"alive",met:"Sessão 1 — festival",desc:"Parceiro de Aurora. Dono original do Tangolin — que Katsu roubou e Petúnia devolveu consigo mesma.",c:["Aurora","Katsu"]},
+     {name:"Timmy Penhasco",role:"Pequeno homem-leão, provável nobre",ini:"TP",s:"unknown",met:"Sessão 1 — festival",desc:"Postura de castelos e criados. Observou a batalha das aranhas com serenidade total. Sumiu da campanha sem explicação.",c:[]},
+     {name:"Lexi",role:"Personalidade notável de Voltuma",ini:"LX",s:"unknown",met:"Mencionada nos registros",desc:"Personalidade notável de Voltuma. Ainda não encontrada pelo grupo.",c:[]},
+     {name:"Oscilação",role:"Personalidade notável de Voltuma",ini:"OS",s:"unknown",met:"Mencionada nos registros",desc:"Personalidade notável de Voltuma. Ainda não encontrada.",c:[]},
+   ]},
+  {id:"marina",icon:"ti-droplet",name:"Marina Forte",tag:"O Domínio de Gravy",v:true,color:"#1D9E75",iBg:"#E1F5EE",iC:"#085041",
+   desc:"Cidade flutuante sob a chuva perpétua de Blob, a Lua de Água. Governada arbitrariamente pelo pirata-esqueleto Gravy. Tudo cheira a sal, madeira encharcada e problema não resolvido.",
+   pois:[{n:"Aglomerado Central",d:"A capital flutuante. Onde Gravy faz anúncios por papagaios e leis duram uma semana."},{n:"Baiacu-Cofre",d:"Peixe-balão gigante preservado como câmara-forte. Sede de Gravy. Tem sarcófago ligado a Umbra-Kael."},{n:"Embaixo da Pia",d:"Bar submerso de Cururu no fundo do oceano. Decorado com destroços de naufrágio. Onde tratos sombrios são feitos."},{n:"Cidade da Grande Árvore",d:"A árvore sagrada era uma máquina de drenagem de energia vital. Destruída pelo grupo."},{n:"Sala das Máquinas",d:"Fundo do Baiacu-Cofre. Onde Shane apareceu. Onde Danízio e Etoile foram enviados via sarcófago."}],
+   npcs:[
+     {name:"Gravy",role:"Pirata-esqueleto, governador",ini:"GR",s:"alive",met:"Sessão 4 — Baiacu-Cofre",desc:"Reflexo na água revela esqueleto de pirata antigo. Trato com Cururu: fornece corpos para experimentos em Umbra-Kael em troca de sabotagem ao Túnel Central. Tem a espada de Florian.",c:["Cururu","Riptide","Puffin","Shane","Florian"]},
+     {name:"Cururu",role:"Peixe-gato ancião, dono do bar",ini:"CU",s:"alive",met:"Sessão 4 — Embaixo da Pia",desc:"Conhece todos pelo nome antes de serem apresentados. Come corações como penhor de tratos. O grupo deve destruir um artefato no Baiacu-Cofre e levar Katsu a um lugar não revelado.",c:["Gravy","Kav'Daen","Katsu","Ira"]},
+     {name:"Riptide",role:"Morto-vivo recorrente, tripulante",ini:"RI",s:"alive",met:"Sessão 3 — barco de Riptide",desc:"Gordo, cinzento, com gosma que vaza pelos poros. Já morreu várias vezes e sempre volta. Deve a vida a Gravy.",c:["Gravy","Puffin"]},
+     {name:"Puffin",role:"Inventora, construía para Gravy",ini:"PU",s:"unknown",met:"Sessão 3 — barco de Riptide",desc:"Olhos cansados de quem trabalha para quem não escolheu. Cururu comeu seu coração como penhor de libertação futura. Aprendiz de Dash em Makia. Desaparecida.",c:["Gravy","Cururu","Dash","Riptide"]},
+     {name:"Ira",role:"Guerreira, irmã de Katsu",ini:"IR",s:"alive",met:"Sessão 2 — porto de Voltuma",desc:"Armadura de aço escurecido. Ficou em Marina Forte aguardando Katsu. Coração comido por Cururu e devolvido mediante trato.",c:["Katsu","Cururu"]},
+     {name:"Katsu",role:"Irmão de Ira, preso com Cururu",ini:"KA",s:"missing",met:"Sessão 3 — cidade da Grande Árvore",desc:"Havia roubado o Tangolin de Starvo. Retido nos domínios de Cururu como garantia. O cantil mágico dele foi usado por Bloody Rose.",c:["Ira","Cururu","Starvo"]},
+     {name:"Tom Goblím",role:"Barqueiro infame",ini:"TG",s:"alive",met:"Sessão 2 — porto de Voltuma",desc:"Procurado em Marina Forte por transportar e vender pessoas. Habilidades náuticas inversamente proporcionais à moralidade.",c:["Ira"]},
+     {name:"Lord Germânico",role:"Líder da Ordem da Grande Árvore",ini:"LG",s:"unknown",met:"Sessão 3 — cidade da Grande Árvore",desc:"Furioso com a destruição da máquina que fazia passar por árvore sagrada. Sumiu após o colapso.",c:[]},
+   ]},
+  {id:"fazendopolis",icon:"ti-wheat",name:"Fazendópolis",tag:"O Celeiro Perpétuo",v:false,color:"#BA7517",iBg:"#FAEEDA",iC:"#633806",
+   desc:"Ecossistema industrial de escala metropolitana. O sol nunca se põe, o trabalho nunca para. A magia é inerte aqui — falha e se dissipa em estática. Gerida por um Conselho Anarco-Capitalista de latifundiários.",
+   pois:[{n:"Avenidas Hidráulicas",d:"Canais artificiais de fluxo ultra-acelerado. Cidadãos usam cápsulas flutuantes para se deslocar."},{n:"Núcleos-Anciões",d:"Alimentam os sistemas de irrigação e transporte. Os trabalhadores os operam mas são incapazes de replicá-los."}],
+   npcs:[
+     {name:"Bloody Rose",role:"Baixista, Lâmina Carmesim",ini:"BRo",s:"alive",met:"Sessão 1 — festival de Voltuma",desc:"Baixista de Fazendópolis com o Baixado nas costas. Fez xixi na sala de Gravy e decretou a lei proibindo não ajudar fugitivos. Brilha literalmente quando bebe do cantil de Katsu.",c:["Katsu"]},
+     {name:"Dona Valda dos Punhos Bovinos",role:"Personalidade notável",ini:"DV",s:"unknown",met:"Mencionada nos registros",desc:"Personalidade notável de Fazendópolis. Ainda não encontrada pelo grupo.",c:[]},
+     {name:"Azalea",role:"Personalidade notável",ini:"AZ",s:"unknown",met:"Mencionada nos registros",desc:"Provavelmente ligada ao Conselho Anarco-Capitalista. Ainda não encontrada.",c:[]},
+     {name:"Bravo",role:"Personalidade notável",ini:"BV",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável de Fazendópolis. Ainda não encontrado.",c:[]},
+   ]},
+  {id:"ilhaparaiso",icon:"ti-sun",name:"Ilha Paraíso",tag:"Luz e Trevas em Abraço",v:false,color:"#D4537E",iBg:"#FBEAF0",iC:"#4B1528",
+   desc:"No meridiano onde o anel se fratura em dois. De um lado o sol nunca se põe — domínio de Diana. Do outro, a sombra nunca se encolhe — império de Kav'Daen. Os Residentes vivem sob o Trato Infinito, servidão hereditária disfarçada de paraíso.",
+   pois:[{n:"Heliantos — Costa do Dia",d:"Resorts de luxo, gastronomia como arte sagrada. Domínio de Diana, a Matriarca. Privacidade custa mais que a estadia."},{n:"Nyxos — Império da Noite",d:"Cassinos monumentais, contratos de sangue. Domínio de Kav'Daen, o Patriarca."},{n:"Rubis da Ilha Paraíso",d:"Pedras encantadas que rastreiam mutuamente quem as carrega. O colar de Frankie aponta para Danízio."}],
+   npcs:[
+     {name:"Danízio",role:"Carteador, membro da party",ini:"DZ",s:"missing",met:"Sessão 1 — festival de Voltuma",desc:"Sorriso de quem conhece seus bolsos e os do próximo. Enviado a Umbra-Kael via sarcófago por Gravy. Tem o dedo de Riptide no bolso. O colar de Frankie aponta para ele.",c:["Etoile Du Tutu","Gravy","Frankie","Kav'Daen"]},
+     {name:"Frankie",role:"Mulher costurada, tesoura enorme",ini:"FR",s:"alive",met:"Sessão 4 — Marina Forte",desc:"Partes costuradas com brutalidade estética de experimento que deu certo sem querer. Conhecia Danízio da Ilha Paraíso. Entrou em Etcetera sem pedir licença. Ceifou dois piratas na névoa. Entregou o colar de rubi a Petúnia.",c:["Danízio","Kav'Daen"]},
+     {name:"Kav'Daen",role:"Patriarca da noite, dono de cassino",ini:"KD",s:"alive",met:"Sessão 5 — Embaixo da Pia",desc:"Negociava com Cururu no fundo do mar. Natureza da negociação desconhecida. Petúnia tem a ficha de rubi do cassino dele, guardada no vaso entre a terra viva.",c:["Cururu","Danízio","Frankie"]},
+     {name:"Diana",role:"Matriarca da Costa do Dia",ini:"DI",s:"unknown",met:"Mencionada nos registros",desc:"Governa Heliantos, a metade iluminada da Ilha Paraíso. Ainda não encontrada.",c:["Kav'Daen"]},
+     {name:"Nüu",role:"Personalidade notável",ini:"NÜ",s:"unknown",met:"Mencionada nos registros",desc:"Personalidade notável da Ilha Paraíso. Ainda não encontrada.",c:[]},
+     {name:"Marisha",role:"Personalidade notável",ini:"MA",s:"unknown",met:"Mencionada nos registros",desc:"Personalidade notável da Ilha Paraíso. Ainda não encontrada.",c:[]},
+   ]},
+  {id:"lilia",icon:"ti-mountain",name:"Lilia",tag:"O Reino Invertido",v:false,color:"#888780",iBg:"#F1EFE8",iC:"#2C2C2A",
+   desc:"Nas extremidades onde a luz de Chroma se recusa a tocar. Assentamentos esculpidos em estalagmites gigantescas que pendem do teto do mundo. Berçário da Lilanite — minério de pulsação violeta que sustenta os Núcleos-Anciões. Lar dos Desmodus.",
+   pois:[{n:"Túneis de mineração",d:"Onde Mexxin cresceu calculando rotas sem bússola. A Lilanite bruta brilha entre a rocha morta."},{n:"A Hóstia",d:"Fragmento de Lilanite mantido no corpo como artefato religioso da fé de Lilia."},{n:"A Máquina de Torin",d:"Relíquia colossal no coração do abismo. Gera campo gravitacional artificial. A Trindade realiza rituais de sangue para mantê-la funcionando."}],
+   npcs:[
+     {name:"Mexxin Rocha",role:"Mineradora Desmodus, membro da party",ini:"MR",s:"alive",met:"Sessão 1 — festival de Voltuma",desc:"Menina-morcego com olhos treinados para enxergar no escuro. Carrega a Hóstia de Lilanite no corpo. Tem a engrenagem dourada de Shane e a joia de Lilanite da coroa da Abelha Rainha.",c:["Shane","Dash","Puffin"]},
+   ]},
+  {id:"skarila",icon:"ti-truck",name:"Skarila",tag:"A Cidade Nômade",v:false,color:"#D85A30",iBg:"#FAECE7",iC:"#4A1B0C",
+   desc:"Organismo nômade que rasga as planícies em busca de quem o mundo esqueceu. Sem reis — só o Consenso Geral de assembleias em movimento. A Etiqueta Skarila torna imperativo aproximar-se de zonas de crise.",
+   pois:[{n:"Tótens de Passagem",d:"Estruturas de pedra e sucata espalhadas pelo anel. A destruição de um totém é o único crime punido com exílio imediato."},{n:"Etcetera",d:"A kombi dos gêmeos. Cada painel de uma cor diferente, cada porta de uma procedência. Autobiografia mecânica."}],
+   npcs:[
+     {name:"Lorem Ipsum",role:"Batedor, braço orgânico de árvore",ini:"LO",s:"alive",met:"Sessão 7 — Marina Forte",desc:"Longilíneo, cicatriz da cabeça ao quadril e braço de árvore. Fala em torrente de palavras que parecem cumprir o propósito de preencher o silêncio. Caiu ferido na névoa e na tundra.",c:["Ipsis Litteris"]},
+     {name:"Ipsis Litteris",role:"Batedor, braço mecânico",ini:"IP",s:"alive",met:"Sessão 7 — Marina Forte",desc:"Gêmeo de Lorem. Fala em linha reta, sem sílaba extra. Pilota Etcetera. Ativou o modo escavação que levou o grupo à câmara de Tunguska.",c:["Lorem Ipsum"]},
+     {name:"Genis",role:"O Mercador do Mundo Todo",ini:"GE",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável de Skarila. Ainda não encontrado.",c:[]},
+     {name:"Kassai",role:"A Areia Sangrenta",ini:"KS",s:"unknown",met:"Mencionada nos registros",desc:"Personalidade notável de Skarila. Ainda não encontrada.",c:[]},
+     {name:"Scurv",role:"O Colecionador de Exílios",ini:"SC",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável de Skarila. Ainda não encontrado.",c:[]},
+   ]},
+  {id:"makia",icon:"ti-settings",name:"Makia",tag:"A Engrenagem Viva",v:true,color:"#5F5E5A",iBg:"#F1EFE8",iC:"#2C2C2A",
+   desc:"Cidade-organismo mecânico em perpétua mutação. Os Núcleos-Anciões emitem um zumbido que vibra nos ossos. Fuligem, vapor de óleo, mutações crônicas. O Túnel Central de Volkor está sendo escavado aqui pela gangue HYPE.",
+   pois:[{n:"A Grande Engrenagem",d:"Corta o chão verticalmente. Parada — o desgaste dos dentes marca o tempo para quem sabe ler."},{n:"Universidade de Engenharia",d:"Torres de vidro e latão polido. Acadêmicos debatem termodinâmica enquanto bebem vinhos caros."},{n:"Oficina de Dash",d:"O único lugar em Makia com matéria orgânica na fachada. Onde a Nepenthes Maxima Vita foi concluída."},{n:"Túnel Central",d:"Maior obra de engenharia do século. A HYPE cava mais fundo do que deveria."},{n:"Setor Punk",d:"Selva de neon e metal corrompido. A HYPE opera aqui."}],
+   npcs:[
+     {name:"Dash",role:"Engenheira extraordinária",ini:"DA",s:"alive",met:"Sessão 8 — sua oficina",desc:"Arisca. Falava de si na terceira pessoa até entender as intenções do grupo. Ex-mestra de Puffin. Ajudou Petúnia a completar a Nepenthes Maxima Vita. Tinha rastros de Florian na oficina.",c:["Puffin","Florian","Mexxin"]},
+     {name:"Maxx, o Nitro",role:"Líder da HYPE",ini:"MX",s:"unknown",met:"Não encontrado — mencionado",desc:"Implantes experimentais e ética flexível. Vê no Túnel não apenas transporte, mas um encanamento de poder.",c:[]},
+     {name:"Professor Teklomalumassem",role:"Teklo, para os íntimos",ini:"TK",s:"unknown",met:"Não encontrado — mencionado",desc:"Personalidade notável de Makia. Provavelmente ligado à Universidade de Engenharia. Ainda não encontrado.",c:[]},
+   ]},
+  {id:"solana",icon:"ti-sun-high",name:"Solana",tag:"A Estrela Cadente",v:false,color:"#B8860B",iBg:"#FFF8DC",iC:"#6B4E00",
+   desc:"Construída sobre platôs de pedra branca. Outrora coração político do anel. Há 80 cromas a Dinastia Solar foi derrubada — o Rei e a Rainha, guardiões do Conhecimento Antigo, foram assassinados. Os Lord Dragon governam como regentes.",
+   pois:[{n:"Platôs de pedra branca",d:"Refletem a luz solar com intensidade quase divina. Arquitetura testemunha de uma era de ouro que chega ao fim."},{n:"Torre de Marfim",d:"Sede dos historiadores. Tenta recuperar fragmentos do Conhecimento Antigo nos níveis inferiores."},{n:"Cavaleiros de Hala",d:"Armaduras de ouro polido que parecem emitir luz própria. Imunes a medos mundanos. O último bastião de esperança."}],
+   npcs:[
+     {name:"Lord Dragon Liam",role:"Regente de Solana",ini:"LL",s:"unknown",met:"Mencionado nos registros",desc:"Um dos três Lord Dragon que governam Solana como regentes após a queda da Dinastia Solar.",c:["Lord Dragon Breno","Lord Dragon Victor"]},
+     {name:"Lord Dragon Breno",role:"Regente de Solana",ini:"LB",s:"unknown",met:"Mencionado nos registros",desc:"Um dos três Lord Dragon. Tenta manter Solana relevante num cenário geopolítico que começa a ignorá-la.",c:["Lord Dragon Liam","Lord Dragon Victor"]},
+     {name:"Lord Dragon Victor",role:"Regente de Solana",ini:"LV",s:"unknown",met:"Mencionado nos registros",desc:"Um dos três Lord Dragon. Luta contra o isolamento econômico e os avanços de Volkor.",c:["Lord Dragon Liam","Lord Dragon Breno"]},
+     {name:"Dorinthea",role:"A Canção de Ferro",ini:"DO",s:"unknown",met:"Mencionada nos registros",desc:"Personalidade notável de Solana. Ainda não encontrada.",c:[]},
+     {name:"Sir Boltyn",role:"O Quebra-Manhãs",ini:"SB",s:"unknown",met:"Mencionado nos registros",desc:"Cavaleiro de Hala. Personalidade notável de Solana.",c:[]},
+     {name:"Hala",role:"A Amazona Radiante",ini:"HA",s:"unknown",met:"Mencionada nos registros",desc:"Namesake da Ordem dos Cavaleiros de Hala.",c:[]},
+   ]},
+  {id:"volkor",icon:"ti-flame",name:"Volkor",tag:"O Império de Aesir",v:false,color:"#A32D2D",iBg:"#FCEBEB",iC:"#501313",
+   desc:"Domínio das cinzas. Solo impuro, rocha ígnea — nada é dado, tudo é conquistado. A mesma linhagem imperial governa há milênios. Está construindo o Túnel Central para tornar-se o centro gravitacional do anel.",
+   pois:[{n:"O Salão Viride",d:"Museu de esculturas em jade da Casa Patène. Ala subterrânea que não aparece nos mapas oficiais."},{n:"Túnel Central",d:"Projeto do Imperador para conectar o anel por trilhos. Sendo sabotado por Marina Forte, Umbra-Kael e Cururu."},{n:"Tigres-Brasa",d:"Felinos típicos de Volkor. Listras revelam camada de magma sob a pele."}],
+   npcs:[
+     {name:"Imperador Aesir",role:"Imperador de Volkor",ini:"IA",s:"alive",met:"Não encontrado — mencionado",desc:"Governa Volkor pela mesma linhagem há milênios. Quer tornar Volkor o centro gravitacional do anel após a queda de Solana.",c:["Cindra Aesir","Fang Aesir","Bernini Patène"]},
+     {name:"Bernini Patène",role:"Escultor de jade, Casa Patène",ini:"BP",s:"alive",met:"Ainda não encontrado",desc:"Herdeiro da Casa Patène de Umbra-Kael, opera em Volkor. Petrifica pessoas e as exibe no Salão Viride. Lawful evil, aristocrático. Não considera as outras pessoas reais da mesma forma que considera uma peça de jade.",c:["Imperador Aesir","Shane"]},
+     {name:"Cindra Aesir",role:"Herdeira do trono · infiltração e estratégia",ini:"CI",s:"alive",met:"Sessão 8 — fronteira de Makia",desc:"Cabelos vermelhos com mecha branca e presilha de ouro. Entrou em Etcetera sem se apresentar. Pediu desculpas a Petúnia e ajudou Gilberto. Busca o irmão Fang. Capaz de silenciar um castelo antes do amanhecer.",c:["Fang Aesir","Gilberto","Polar","Imperador Aesir"]},
+     {name:"Fang Aesir",role:"Herdeiro do trono · força e precisão letal",ini:"FA",s:"missing",met:"Visto de longe — sessão 8",desc:"Guerreiro de força bruta e precisão letal. Bom rastreador segundo Cindra. Estava em Tunguska com uma figura encurvada mascarada. Ainda não encontrado.",c:["Cindra Aesir","Imperador Aesir"]},
+     {name:"Gilberto",role:"Cocheiro da família imperial",ini:"GI",s:"alive",met:"Sessão 8 — fronteira de Makia",desc:"Interessante e legal. O tipo de pessoa que você lembra quando não devia mais ter razão para lembrar. Voou quando o gigante acertou a carruagem. Reapareceu inconsciente na câmara de Islândia. Petúnia serviu-lhe sopa.",c:["Cindra Aesir","Fang Aesir"]},
+     {name:"Yoji",role:"O Escudo Real",ini:"YO",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável de Volkor. Ainda não encontrado.",c:["Imperador Aesir"]},
+     {name:"Fai",role:"O Fênix",ini:"FI",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável de Volkor. Ainda não encontrado.",c:[]},
+     {name:"Dromai",role:"A Artista das Cinzas",ini:"DR",s:"unknown",met:"Mencionada nos registros",desc:"Personalidade notável de Volkor. Ainda não encontrada.",c:[]},
+   ]},
+  {id:"umbrakael",icon:"ti-eye-off",name:"Umbra-Kael",tag:"O Cárcere de Vidro Negro",v:false,color:"#534AB7",iBg:"#EEEDFE",iC:"#26215C",
+   desc:"No lado oculto do Anel. A ética foi extirpada há séculos. Permanentemente fustigada pela Tempestade Eterna. Experimentos, transgressão biológica, criaturas costuradas com tendões de aço e sombras sólidas.",
+   pois:[{n:"A prisão de Umbra-Kael",d:"Construída por Shane durante a guerra de Petúnia. A cicatriz rúnica dela pode estar ligada a essa época."},{n:"Castelos de obsidiana",d:"Torres que desafiam a gravidade. Vigiam os únicos caminhos seguros."},{n:"Sarcófago do Baiacu-Cofre",d:"Portal de entrada. Danízio e Etoile foram enviados via sarcófago."}],
+   npcs:[
+     {name:"Shane",role:"Cientista, pele cravejada de Lilanite",ini:"SH",s:"alive",met:"Sessão 6 — sala das máquinas",desc:"Construiu a prisão de Umbra-Kael durante a guerra de Petúnia. Trata seres vivos como material de pesquisa. Entregou engrenagem de Lilanite a Mexxin. Provavelmente em Umbra-Kael agora.",c:["Gravy","Puffin","Mexxin","Viscerai Grão-Moldador","Bernini Patène"]},
+     {name:"Viscerai Grão-Moldador",role:"Cientista de Umbra-Kael",ini:"VI",s:"unknown",met:"Mencionado por Shane",desc:"Sabe algo sobre os Núcleos-Anciões de Makia. O lema de Umbra-Kael é atribuído a ele: 'buscamos a utilidade absoluta através da dor'. Nunca encontrado pessoalmente.",c:["Shane"]},
+     {name:"A Dama",role:"Personalidade notável",ini:"AD",s:"unknown",met:"Mencionada nos registros",desc:"Personalidade notável de Umbra-Kael. Ainda não encontrada pelo grupo.",c:[]},
+     {name:"Arakni",role:"Cobaia-Errante",ini:"AR",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável de Umbra-Kael. Ainda não encontrado.",c:[]},
+     {name:"Chane",role:"Preso às Sombras",ini:"CH",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável de Umbra-Kael. Ainda não encontrado.",c:[]},
+     {name:"O Carrasco",role:"Gigante de armadura prateada",ini:"CA",s:"alive",met:"Sessão 8 — tundra de Tunguska",desc:"Três metros de armadura prateada polida. Elmo com fenda horizontal e dois chifres imensos. Martelo de guerra proporcional. Caçava Florian com duas feras etéreas. Derrotado por Petúnia na sessão 9.",c:["Florian","Shane"]},
+     {name:"Etoile Du Tutu",role:"Dançarino entropista, membro da party",ini:"ET",s:"missing",met:"Sessão 3 — cidade da Grande Árvore",desc:"Caiu literalmente do céu no meio da campanha. Saltou voluntariamente dentro do sarcófago para salvar Danízio. Preso em Umbra-Kael.",c:["Danízio","Gravy"]},
+   ]},
+  {id:"tunguska",icon:"ti-snowflake",name:"Tunguska",tag:"A Tundra Errática",v:true,color:"#378ADD",iBg:"#E6F1FB",iC:"#0C447C",
+   desc:"Deserto branco de proporções colossais. O frio não corta a pele — vai fundo, até o espírito. A névoa roxa e verde derrete a fronteira entre realidade e pesadelo. Os habitantes são o povo mais acolhedor do continente.",
+   pois:[{n:"Câmara subterrânea de Islândia",d:"Talhada da rocha, com caldeirão comunal. O único lugar quente em quilômetros. Onde o grupo acordou após a queda."},{n:"Névoa roxa e verde",d:"Apareceu quando a região virou passagem. Derrete a fronteira entre realidade e pesadelo. Camuflagem para as abominações da região."},{n:"Lareira comunal",d:"Madeira importada de Marina Forte que queima dia e noite. Os moradores produzem as bebidas alcoólicas mais potentes do mundo."}],
+   npcs:[
+     {name:"Islândia",role:"Anfitriã da câmara subterrânea",ini:"IS",s:"alive",met:"Sessão 9 — câmara subterrânea",desc:"Enorme e envelhecida. Cabelos e íris brancos como o gelo. Acolheu o grupo inconsciente após a queda. A pergunta de Petúnia sobre filhos a magoou visivelmente.",c:["Dinamarca","Polar"]},
+     {name:"Dinamarca",role:"Homem respeitado de Tunguska",ini:"DI",s:"alive",met:"Sessão 9 — câmara subterrânea",desc:"Enorme, bronco, forte. Passava fome para que os outros tivessem o que comer. Desmaiou em resposta ao Tangolin. Lorem identificou linhas invisíveis ligando-o a Petúnia e ao pangolim. Deu colares de estalagmite de gelo ao grupo.",c:["Islândia","Petúnia"]},
+     {name:"Polar",role:"Guia local de Tunguska",ini:"PO",s:"alive",met:"Sessão 9 — câmara subterrânea",desc:"Alto e arredondado. Aceitou a oferta de Cindra para guiar o grupo. Mexxin o convenceu a usar a bússola botânica de Petúnia em vez da sua.",c:["Cindra Aesir","Islândia","Mexxin"]},
+     {name:"Jarl",role:"Alguém deve Proteger",ini:"JA",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável de Tunguska. Ainda não encontrado.",c:[]},
+   ]},
+  {id:"zenshinsora",icon:"ti-wind",name:"Zenshin Sora",tag:"O Firmamento do Silêncio",v:false,color:"#0F6E56",iBg:"#E1F5EE",iC:"#04342C",
+   desc:"Acima do mar de nuvens, onde o ar se torna rarefeito. Arquipélago vertical de penhascos interconectados por pontes de corda. Pagodes entalhados diretamente na rocha sobre abismos. O som é considerado distração — os habitantes fazem Voto de Silêncio ao atingir a maioridade.",
+   pois:[{n:"Pagodes de rocha",d:"Entalhados diretamente na pedra calcária sobre abismos. Cachoeiras eternas que desaparecem na névoa."},{n:"Pontes de corda",d:"Interconectam os penhascos verticais. Estreitas e escorregadias pela umidade constante."},{n:"Os Kiri-Tsukai",d:"Manipuladores de Névoa. Ilusões indistinguíveis do real — um viajante pode caminhar sobre o vazio sustentado apenas pela própria crença."}],
+   npcs:[
+     {name:"Zen",role:"Personalidade notável",ini:"ZN",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável de Zenshin Sora. Ainda não encontrado.",c:[]},
+     {name:"Annya",role:"Personalidade notável",ini:"AN",s:"unknown",met:"Mencionada nos registros",desc:"Personalidade notável de Zenshin Sora. Ainda não encontrada.",c:[]},
+     {name:"Benji",role:"Personalidade notável",ini:"BE",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável de Zenshin Sora. Ainda não encontrado.",c:[]},
+     {name:"Tom Katsu",role:"Personalidade notável",ini:"TK",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável de Zenshin Sora. Ainda não encontrado.",c:[]},
+   ]},
+  {id:"reinoselvagem",icon:"ti-trees",name:"Reino Selvagem",tag:"A Selva dos Soberanos",v:false,color:"#3B6D11",iBg:"#EAF3DE",iC:"#173404",
+   desc:"Não é um lugar para ser visitado; é um lugar para ser sobrevivido. Mega-fauna colossal, estruturas de metal cinza de uma era esquecida emergindo das encostas. Os Orcs de Presa-Rocha dominam — forjados pela dieta de feras colossais e pelo treinamento constante.",
+   pois:[{n:"Mega-Fauna",d:"Ursos do tamanho de cabanas, serpes de escamas de granito, felinos-dentuços. Aqui são meros elos da cadeia alimentar."},{n:"Ruínas antigas",d:"Estruturas de metal cinza manchadas pela umidade. Impossível distinguir arquitetura de formação natural."},{n:"Clãs de Presa-Rocha",d:"Os orcs utilizam arpões de osso e correntes de ferro negro para derrubar bestas colossais."}],
+   npcs:[
+     {name:"Rhinar",role:"O Quebra-Bestas",ini:"RH",s:"unknown",met:"Mencionado nos registros",desc:"Seu ditado resume a filosofia local: o ferro quebra, a magia falha, apenas o músculo e a vontade permanecem.",c:[]},
+     {name:"Kayo",role:"O Perigoso Braço Esquerdo",ini:"KY",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável do Reino Selvagem. Ainda não encontrado.",c:["Rhinar"]},
+     {name:"Cabeça-Dura",role:"Personalidade notável",ini:"CD",s:"unknown",met:"Mencionado nos registros",desc:"Personalidade notável do Reino Selvagem. Ainda não encontrado.",c:[]},
+   ]},
+];
+const sL={alive:"ativo",dead:"morto",missing:"desaparecido",unknown:"desconhecido"};
+const sC={alive:"sa",dead:"sd",missing:"sm",unknown:"su"};
+function renderOv(){
+  document.getElementById("rg").innerHTML=R.map(r=>`
+    <button class="rbtn" onclick="showR('${r.id}')">
+      <span class="ri"><i class="ti ${r.icon}"></i></span>
+      <div class="rn">${r.name}</div>
+      <div class="rt">${r.tag}</div>
+      <div class="rc">${r.npcs.length} personagem${r.npcs.length!==1?"s":""} · <span style="color:${r.v?"#059669":"#aaa"}">${r.v?"visitada":"não visitada"}</span></div>
+    </button>
+  `).join("");
+}
+function showOv(){
+  document.getElementById("ov").style.display="block";
+  document.getElementById("dv").classList.remove("on");
+  window.scrollTo(0,0);
+}
+function showR(id){
+  const r=R.find(x=>x.id===id);
+  if(!r)return;
+  document.getElementById("ov").style.display="none";
+  document.getElementById("dv").classList.add("on");
+  const pH=r.pois.map(p=>`<div class="poi"><strong>${p.n}</strong><span>${p.d}</span></div>`).join("");
+  const nH=r.npcs.length?r.npcs.map(n=>`
+    <div class="npc">
+      <div class="nt">
+        <div class="av" style="background:${r.iBg};color:${r.iC}">${n.ini}</div>
+        <div><div class="nn">${n.name}<span class="sb ${sC[n.s]}">${sL[n.s]}</span></div><div class="nr">${n.role}</div></div>
+      </div>
+      <div class="nb">
+        <div style="margin-bottom:${n.c.length?"8px":"0"}">${n.desc}</div>
+        ${n.c.length?`<div style="font-size:12px;color:#aaa;margin-bottom:4px">Conexões</div><div class="cs">${n.c.map(x=>`<span class="ct">${x}</span>`).join("")}</div>`:""}
+        <div class="mn"><i class="ti ti-map-pin" style="font-size:12px;vertical-align:-1px"></i> ${n.met}</div>
+      </div>
+    </div>
+  `).join(""):`<p class="empty">Nenhum personagem registrado nessa região ainda.</p>`;
+  document.getElementById("dc").innerHTML=`
+    <div class="dh">
+      <h2><i class="ti ${r.icon}" style="color:${r.color}"></i>${r.name}<span class="${r.v?"vb":"uvb"}">${r.v?"visitada":"não visitada"}</span></h2>
+      <p>${r.desc}</p>
+    </div>
+    <div class="sl">Pontos de interesse</div>
+    <div class="pl">${pH}</div>
+    <div class="sl">Personagens de ${r.name}</div>
+    <div class="nl">${nH}</div>
+  `;
+  window.scrollTo(0,0);
+}
+renderOv();
+</script>
+</body>
+</html>
